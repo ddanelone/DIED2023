@@ -1,0 +1,20 @@
+package died.guia03.ejercicio03;
+
+public class Temperatura {
+	private String ciudad;
+	private Float Temperatura[];
+	private Short CAPACIDAD_MAXIMA = 50;
+	private Short indice=0;
+	
+	public Float Registro(String ciudad, Short max) {
+		this.ciudad = "-";
+		
+	};
+		
+	public  Float Registro(String ciudad, Short max) {
+		this.ciudad = ciudad;
+		this.Temperatura[] = new Array[max];
+		
+	};
+
+}

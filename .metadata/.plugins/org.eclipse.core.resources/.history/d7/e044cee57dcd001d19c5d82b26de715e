@@ -1,0 +1,21 @@
+ppackage died.guia03.ejercicio03;
+
+public class Registro {
+	private String ciudad;
+	private Float Temperatura[];
+
+	private Short indice=0;
+	
+	public Float Registro(String ciudad, Short max) {
+		this.ciudad = "-";
+		this.Temperatura = new Array[max];
+		
+	};
+		
+	public  Float Registro(String ciudad, Short max) {
+		this.ciudad = ciudad;
+		this.Temperatura[] = new Array[max];
+		
+	};
+
+}
