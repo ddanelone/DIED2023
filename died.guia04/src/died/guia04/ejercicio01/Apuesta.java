@@ -1,34 +1,46 @@
 package died.guia04.ejercicio01;
+import java.util.*;
+
 
 public class Apuesta {
-    private String nombre;
-    private Byte[] arreglo;
+    private String nombreUsuario;
+    private byte[] numerosApostados;
 
-    public Apuesta(String nombre) {
-        this.nombre = nombre;
-        this.arreglo = new Byte[6];
+    public Apuesta(String nombreUsuario, byte[] numerosApostados) {
+        this.nombreUsuario = nombreUsuario;
+        this.numerosApostados = numerosApostados;
     }
 
-    public int calcularAciertos(byte[] resultados) {
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+    
+    
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+    
+    public String getUsuario() {
+    	return this.nombreUsuario;
+    };
+
+    public byte[] getNumerosApostados() {
+        return numerosApostados;
+    }
+
+    public void setNumerosApostados(byte[] numerosApostados) {
+        this.numerosApostados = numerosApostados;
+    }
+
+    public int calcularAciertos(byte[] numerosSorteo) {
         int aciertos = 0;
-        for (int i = 0; i < resultados.length; i++) {
-            if (this.presente(resultados[i])) {
+        for (byte numeroApostado : numerosApostados) {
+            if (Arrays.binarySearch(numerosSorteo, numeroApostado) >= 0) {
                 aciertos++;
             }
         }
         return aciertos;
     }
-    public boolean presente (byte resultado) {
-        int i=0;
-        boolean en = false;
-        while (!en & i<=this.arreglo.length) {
-            if (this.arreglo[i] == resultado) {
-                en = true;
-            }
-            i++;
-        }
-        return en;
-    }
-
 }
 

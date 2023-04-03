@@ -1,33 +1,43 @@
 package died.guia04.ejercicio01;
-
-
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class Sorteo {
-    int semana;
-    int anio;
-    ArrayList<Apuesta> apuestas;
-    private Byte[] sorteo;
-    Random generadorAleatorio = new Random();
+    private int semana;
+    private int anio;
+    private List<Apuesta> apuestas;
 
+    public Sorteo(int semana, int anio) {
+        this.semana = semana;
+        this.anio = anio;
+        apuestas = new ArrayList<>();
+    }
 
-    public void generarSorteo() {
-        this.sorteo = new Byte[6];
-;
-        for (int i=0; i<6; i++) {
-            this.sorteo[i] = (byte) generadorAleatorio.nextInt(0,42);
+    public void addApuesta(Apuesta apuesta) {
+        apuestas.add(apuesta);
+    }
+
+    public byte[] generarSorteo() {
+        Random rand = new Random();
+        byte[] numerosSorteo = new byte[6];
+        for (int i = 0; i < 6; i++) {
+            numerosSorteo[i] = (byte) rand.nextInt(43);
         }
-   }
+        return numerosSorteo;
+    }
 
-   public void calcularGanadores() {
-    /* Necesito recorrer todo el ArrayList de apuestas y almacenar todos los aciertos que tiene cada apuesta
-     * y luego compararlos para ver cual es el mayor, con el mayor hacer una nueva lista con toda la
-     * gente que cumpla con la condición  */
-
-   }
-
-
-
+    public List<Apuesta> calcularGanadores(byte[] numerosSorteo) {
+        List<Apuesta> ganadores = new ArrayList<>();
+        int maxAciertos = -1;
+        for (Apuesta apuesta : apuestas) {
+            int aciertos = apuesta.calcularAciertos(numerosSorteo);
+            if (aciertos > maxAciertos) {
+                maxAciertos = aciertos;
+                ganadores.clear();
+                ganadores.add(apuesta);
+            } else if (aciertos == maxAciertos) {
+                ganadores.add(apuesta);
+            }
+        }
+        return ganadores;
+    }
 }
-
