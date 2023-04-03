@@ -29,12 +29,14 @@ public class Premium extends Pedido {
    @Override
    public double comision() {
       double total = 0.0;
-      if (this.productos != null && this.productos.length < 10)
-         total = this.precio() * 20.0 /100.0;
-      else if (this.productos != null && this.productos.length >= 10) {
-         total = (this.precio() * 15.0 / 100.0) + 50.0;
+      if (this.fecha != null) {
+         if (this.productos != null && this.productos.length < 10)
+            total = this.precio() * 20.0 / 100.0;
+         else if (this.productos != null && this.productos.length >= 10) {
+            total = (this.precio() * 15.0 / 100.0) + 50.0;
+         }
+         System.out.println("Total comision: " + total);
       }
-      System.out.println("Total comision: " + total);
-      return total;
+        return total;
    }
  }

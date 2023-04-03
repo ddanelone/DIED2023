@@ -25,8 +25,12 @@ public class Basico extends Pedido {
 
    @Override
    public double comision() {
-      System.out.println("Total comision: " + this.precio() * 10.0 /100.0);
-      return this.precio() * 10.0 /100.0;
+      if (this.fecha != null) {
+         System.out.println("Total comision: " + this.precio() * 10.0 / 100.0);
+         return this.precio() * 10.0 / 100.0;
+      } else {
+         return 0.0;
+      }
    }
 
 }

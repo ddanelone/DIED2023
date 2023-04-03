@@ -20,5 +20,7 @@ package ejercicio02;
          return total;
       }
 
-
+      public void marcarEntregado (Pedido unPedido) {
+         unPedido.setEntregado();
+      }
    }

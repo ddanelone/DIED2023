@@ -1,14 +1,12 @@
 package ejercicio02;
 
+import java.time.LocalDate;
+
 public abstract class Pedido {
 
    Producto[] productos;
+   LocalDate fecha;
 
-   public Pedido() {
-      // TODO Auto-generated constructor stub
-
-   }
-   
    public boolean agregarProducto(Producto p) {
       //tengo que iterar todo el arreglo para ver si tengo lugares vacíos y, de ser así, agregarlo en la última posición. Luego, salgo.
       for (int i = 0; i < productos.length; i++) {
@@ -23,6 +21,10 @@ public abstract class Pedido {
    public abstract double  precio();
 
    public abstract double comision();
+
+   public void setEntregado() {
+      this.fecha = LocalDate.now();
+   }
    
    public double calcularPrecioPedido(int porcentaje) {
       double precio = 0.0;

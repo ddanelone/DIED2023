@@ -1,8 +1,12 @@
 package ejercicio02;
 
+import java.time.LocalDate;
+
 public class App {
 
    public static void main(String[] args) {
+      LocalDate fecha = LocalDate.now();
+
       Producto prod1 = new Producto("Bateria moto", 8700.0);
       Producto prod2 = new Producto("Bateria auto", 12000.0);
       Producto prod3 = new Producto("Bateria camion", 15000.0);
@@ -19,9 +23,12 @@ public class App {
        Cadete cad1 = new Cadete();
        cad1.agregarPedido(p1);
        cad1.agregarPedido(p2);
+       cad1.marcarEntregado(p1);
+       cad1.marcarEntregado(p2);
+
        
        System.out.println("Total Comisiones del cadete 1: " +cad1.totalComisiones());
-         
+       System.out.println(fecha);  
 
 	}
 
