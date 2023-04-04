@@ -3,7 +3,7 @@ package ejercicio03;
 import java.time.LocalDate;
 
 public class Tramite implements Comisionable {
-   private String descripcion;
+   private String descripcion;  //lo dejé así.
    private String domicilio;
    private LocalDate fecha;
 
