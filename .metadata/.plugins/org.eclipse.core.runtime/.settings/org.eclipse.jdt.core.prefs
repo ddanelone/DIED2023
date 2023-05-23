@@ -1,7 +1,10 @@
 eclipse.preferences.version=1
+org.eclipse.jdt.core.classpathVariable.ECLIPSE_HOME=D\:/Users/Diego/eclipse/jee-2023-03/eclipse/
 org.eclipse.jdt.core.classpathVariable.JRE_LIB=C\:/Program Files/Eclipse Adoptium/jdk-17.0.6.10-hotspot/lib/jrt-fs.jar
 org.eclipse.jdt.core.classpathVariable.JRE_SRC=C\:/Program Files/Eclipse Adoptium/jdk-17.0.6.10-hotspot/lib/src.zip
 org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=
+org.eclipse.jdt.core.classpathVariable.JUNIT_HOME=C\:/Users/Diego/.p2/pool/plugins/org.junit_4.13.2.v20211018-1956.jar
+org.eclipse.jdt.core.classpathVariable.M2_REPO=C\:/Users/Diego/.m2/repository
 org.eclipse.jdt.core.codeComplete.argumentPrefixes=
 org.eclipse.jdt.core.codeComplete.argumentSuffixes=
 org.eclipse.jdt.core.codeComplete.fieldPrefixes=
