@@ -1,7 +1,7 @@
 package problemaIntegrador;
 
 public class Bien {
-    private static int contadorId = 1;
+    private static int contadorId = 0;
     protected int id;
     protected String alias;
     protected String descripcion;

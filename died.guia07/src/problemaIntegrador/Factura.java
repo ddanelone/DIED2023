@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Factura implements Comparable<Factura> {
-    private static int contadorId = 1;
+    private static int contadorId = 0;
     protected int id;
     protected double montoTotal;
     protected List<Bien> bienes;

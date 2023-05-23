@@ -1,6 +1,7 @@
 package problemaRepaso;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import problemaRepaso.Capacitacion.Tema;
 
@@ -16,6 +17,7 @@ public class ListaCapacitaciones {
 		this.listaCapacitaciones = new ArrayList<>();
 	}
 
+	// TENGO LAS DOS VERSIONES DE calcularCreditos();
 	public int calcularCreditos() {
 		int creditos = 0;
 		for (Capacitacion unaCapacitacion : listaCapacitaciones) {
@@ -25,6 +27,11 @@ public class ListaCapacitaciones {
 		return creditos;
 	}
 
+	public int calcularCreditosStream() {
+		return listaCapacitaciones.stream().mapToInt(Capacitacion::cantidadCreditos).sum();
+	}
+
+	// TENGO LAS DOS VERSIONES DE calcularCostos();
 	public double calcularCosto() {
 		double costo = 0.0;
 		for (Capacitacion unaCapacitacion : listaCapacitaciones) {
@@ -33,6 +40,11 @@ public class ListaCapacitaciones {
 		return costo;
 	}
 
+	public double calcularCostoStream() {
+		return listaCapacitaciones.stream().mapToDouble(Capacitacion::calcularCosto).sum();
+	}
+
+	//// TENGO LAS DOS VERSIONES DE costoPromedio();
 	public double costoPromedio() {
 		double costoP = 0.0;
 		for (Capacitacion unaCapacitacion : listaCapacitaciones) {
@@ -41,6 +53,14 @@ public class ListaCapacitaciones {
 		return costoP / listaCapacitaciones.size();
 	}
 
+	public double costoPromedioStream() {
+		return listaCapacitaciones.stream()
+				.mapToDouble(Capacitacion::calcularCosto)
+				.average()
+				.orElse(0.0);
+	}
+
+	//TENGO LAS DOS VERSIONES
 	private List<Capacitacion> obtenerCapacitacionesPorTema(Tema tema) {
 		List<Capacitacion> capacitacionesPorTema = new ArrayList<>();
 
@@ -53,7 +73,16 @@ public class ListaCapacitaciones {
 
 		return capacitacionesPorTema;
 	}
+	private List<Capacitacion> obtenerCapacitacionesPorTemaStream(Tema tema) {
+		return listaCapacitaciones.stream()
+		        .filter(capacitacion -> capacitacion.getTema() == tema)
+		        .sorted(Comparator.comparingDouble(Capacitacion::calcularCosto).reversed())
+		        .collect(Collectors.toList());
+	}
+	
 
+	//DOS VERSIONES TAMBIEN TENGO, imperativa y con Stream()
+	//Ojo, esta lista de capacitaciones es de 1 docente cada lista. Debería tener un registro de docentes con su lista de capacitaciones...
 	public Docente docenteConMasCreditos() {
 		Docente docente = new Docente();
 
@@ -67,6 +96,13 @@ public class ListaCapacitaciones {
 
 		return docente;
 	}
+	public Docente docenteConMasCreditosStream() {
+		  return listaCapacitaciones.stream()
+			        .max(Comparator.comparingInt(Capacitacion::creditosPorDocente))
+			        .map(Capacitacion::getDocente)
+			        .orElse(new Docente());
+	}
+
 
 	private List<Capacitacion> obtenerCapacitacionesPrioritarias() {
 		List<Capacitacion> capacitacionesPrioritarias = new ArrayList<>();
@@ -79,13 +115,13 @@ public class ListaCapacitaciones {
 
 		return capacitacionesPrioritarias;
 	}
-	
+
 	private List<Capacitacion> obtenerCapacitacionesPrioritariasOrdenadas() {
 		List<Capacitacion> capacitacionesOrdenadas = new ArrayList<>();
 		capacitacionesOrdenadas = this.obtenerCapacitacionesPrioritarias();
-		
+
 		capacitacionesOrdenadas.sort(Comparator.comparingDouble(Capacitacion::cantidadCreditos).reversed());
-		
+
 		return capacitacionesOrdenadas;
 	}
 

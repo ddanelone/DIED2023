@@ -1,7 +1,7 @@
 package problemaIntegrador;
 
 public abstract class Persona implements CriterioBusqueda<Localidad> {
-    private static int contadorId = 1;
+    private static int contadorId = 0;
     protected int id;
     protected String nombre;
     protected Localidad localidad;
