@@ -1,4 +1,5 @@
 package died.estructuras;
+
 public class Vertex<T extends Comparable<T>> {
 
 	private T value;
